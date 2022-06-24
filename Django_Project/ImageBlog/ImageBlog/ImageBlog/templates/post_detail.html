@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="post" xmlns="http://www.w3.org/1999/html">
+      {% if post.created_date %}
+      <div class="date">
+        {{ post.created_date }}
+      </div>
+      {% endif %}
+      <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+      <h2>{{ post.title }}</h2>
+      <img class="img" src="{{ post.picture.url }}" alt="picture" width="200px">
+      <p>{{ post.text|linebreaksbr }}</p>
+  </div>
+{% endblock %}

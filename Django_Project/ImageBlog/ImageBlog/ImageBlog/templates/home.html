@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% for post in object_list %}
+            <div class="post">
+                <div class="data">
+                    <p>Published: {{ post.created_date }}</p>
+                </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                <img src="{{ post.picture.url }}" alt="{{ post.title }}" width="100px">
+            <p>{{ post.text|slice:'200' }}</p>
+            </div>
+        {% endfor %}
+{% endblock %}
