@@ -4,6 +4,9 @@ from django.urls import reverse_lazy
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from rest_framework import viewsets
+from . import serializers
+
 
 class HomePageView(ListView):
     paginate_by = 2
@@ -32,3 +35,7 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     fields = ['title', 'text', 'picture']
     template_name = 'post_edit.html'
     success_url = reverse_lazy('home')
+
+class PostViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.PostSerializer
+    queryset = Post.objects.all()
