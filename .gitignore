@@ -1,4 +1,8 @@
 *.pyc
 *.sqlite3
 __pycache__
+<<<<<<< HEAD
 .idea
+=======
+.idea
+>>>>>>> 6ed3e09a03fdf9707b46857eccf359e7a5e348ef
