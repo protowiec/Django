@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% for post in page_obj %}
 <div class="post" xmlns="http://www.w3.org/1999/html">
     <div class="data">
@@ -11,6 +14,7 @@
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 {% endfor %}
+{% endif %}
 <div class="'pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}

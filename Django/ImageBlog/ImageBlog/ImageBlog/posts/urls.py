@@ -13,5 +13,5 @@ urlpatterns = [
     path('post/<int:pk>/', ShowPostView.as_view(), name='post_detail'),
     path('post/<int:pk>/edit/', EditPostView.as_view(), name='post_edit'),
     path('api/', include(router.urls)),
-    path('api/auth/', include('rest_framework.urls'))
+    path('api/auth/', include('rest_framework.urls')),
 ]

@@ -1,4 +1,5 @@
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, \
+    UpdateView
 from .models import Post
 from django.urls import reverse_lazy
 from .forms import PostForm
@@ -8,7 +9,7 @@ from rest_framework import viewsets
 from . import serializers
 
 
-class HomePageView(ListView):
+class HomePageView(LoginRequiredMixin, ListView):
     paginate_by = 2
     model = Post
     template_name = 'home.html'
