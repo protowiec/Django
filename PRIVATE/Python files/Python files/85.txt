@@ -1,4 +1,0 @@
-maciej;prot;pierwsza
-sebastian;milka;druga
-maciej;prot;pierwsza
-tata;mama;baba

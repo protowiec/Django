@@ -1,1 +1,0 @@
-extra_licznik = 100
