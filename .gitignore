@@ -1,7 +1,7 @@
 *.pyc
 *.sqlite3
 __pycache__
-.PRIVATE/
+PRIVATE/
 <<<<<<< HEAD
 .idea
 =======
