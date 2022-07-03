@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'posts',
-    'jquery'
+    'jquery',
+    'accounts'
 ]
 
 MIDDLEWARE = [
