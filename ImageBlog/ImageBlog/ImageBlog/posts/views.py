@@ -4,13 +4,13 @@ from .models import Post
 from django.urls import reverse_lazy
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.db.models import Q
 from rest_framework import viewsets
 from . import serializers
 
 
 class HomePageView(LoginRequiredMixin, ListView):
-    paginate_by = 2
+    paginate_by = 5
     model = Post
     template_name = 'home.html'
 
@@ -36,6 +36,18 @@ class EditPostView(LoginRequiredMixin, UpdateView):
     fields = ['title', 'text', 'picture']
     template_name = 'post_edit.html'
     success_url = reverse_lazy('home')
+
+
+class SearchResultsView(LoginRequiredMixin, ListView):
+    paginate_by = 5
+    model = Post
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Post.objects.filter(Q(title__icontains=query))
+        return object_list
+
 
 class PostViewset(viewsets.ModelViewSet):
     serializer_class = serializers.PostSerializer

@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import HomePageView, CreatePostView, ShowPostView, EditPostView
+from .views import HomePageView, CreatePostView, ShowPostView, EditPostView, SearchResultsView
 from . import views
 from rest_framework import routers
 
@@ -12,6 +12,7 @@ urlpatterns = [
     path('post/', CreatePostView.as_view(), name='post'),
     path('post/<int:pk>/', ShowPostView.as_view(), name='post_detail'),
     path('post/<int:pk>/edit/', EditPostView.as_view(), name='post_edit'),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
     path('api/', include(router.urls)),
     path('api/auth/', include('rest_framework.urls')),
 ]
