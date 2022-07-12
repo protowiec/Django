@@ -3,8 +3,7 @@ from django.views.generic import ListView, CreateView, DetailView, \
 from .models import Post
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import Template, RequestContext
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from .forms import PostForm, ContactForm
 from django.contrib.auth.mixins import LoginRequiredMixin

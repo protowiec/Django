@@ -1,0 +1,4 @@
+ImageBlog:
+Django                   4.0.3
+selenium                 4.2.0
+
