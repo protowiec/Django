@@ -1,10 +1,14 @@
-from django.views.generic import ListView, CreateView, DetailView, \
+from django.views.generic import (
+    ListView,
+    CreateView,
+    DetailView,
     UpdateView
+)
 from .models import Post
 from django.core.mail import send_mail, BadHeaderError
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from .forms import PostForm, ContactForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
@@ -32,6 +36,27 @@ class ShowPostView(DetailView):
     model = Post
     template_name = 'post_detail.html'
     success_url = reverse_lazy('post_detail')
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+
+        likes_connected = get_object_or_404(Post, id=self.kwargs['pk'])
+        liked = False
+        if likes_connected.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        data['number_of_likes'] = likes_connected.number_of_likes()
+        data['post_is_liked'] = liked
+        return data
+
+
+def postLike(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
 
 
 class EditPostView(LoginRequiredMixin, UpdateView):
