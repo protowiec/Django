@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <div class="post" xmlns="http://www.w3.org/1999/html">
+          {% if post.created_date %}
+          <div class="data">
+            {{ post.created_date }}
+          </div>
+          {% endif %}
+          <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+          <h2>{{ post.title }}</h2>
+          <img class="img" src="{{ post.picture.url }}" alt="picture" width="200px">
+          <p>{{ post.text|linebreaksbr }}</p>
+      </div>
+<div>
+    {% if user.is_authenticated %}
+        <form action="{% url 'post_like' object.id %}" method="POST">
+            {% csrf_token %}
+            {% if post_is_liked %}
+            <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-info">Unlike</button>
+            {% else %}
+            <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-info">Like</button>
+            {% endif %}
+        </form>
+    {% else %}
+        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article</a><br>
+    {% endif %}
+    <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
+</div>
+{% endblock %}

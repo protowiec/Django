@@ -1,0 +1,104 @@
+{% load static %}
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Blog for programmers</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <script src="https://use.fontawesome.com/451851369b.js"></script>
+            <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+            <script type="text/javascript" src="{{ STATIC_URL }} /static/jquery.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        </head>
+<body>
+<nav class="navbar navbar-light" style="background-color: #061A40;">
+    <a class="top-menu" href="http://facebook.com">Facebook</a>
+    <a class="top-menu" href="http://twitter.com">Twitter</a>
+    <a class="top-menu" href="http://youtube.com">Youtube</a>
+    <div class="plus">
+        <a href="{% url 'signup' %}" class="top-menu">Signup</a>
+        <a href="{% url 'post' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>
+    </a></div>
+</nav>
+    <div class="all">
+<nav class="navbar navbar-light bg-light">
+    <div class="page-header">
+        <img src="/media/images/logo1.png" height="10%">
+        <a class="nav-link" href="/"><b>Main Page</b></a>
+        <a class="nav-link" href="#"><b>Newest Articles</b></a>
+        <a class="nav-link" href="{% url 'email' %}"><b>Contact us</b></a>
+    </div>
+    <div class="gora">
+    <p class="title"><b>Blog For Programmers</b></p>
+    <img class="baner" src="/media/images/Keyboard.jpg" width="90%"><br/><br/><br/>
+</div>
+</nav>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</div>
+<div class="stopka">
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h6><b>About us</b></h6>
+                <p class="text-justify">He has also said he is a fan of Ron DeSantis,the Republican Florida governor who
+                    introduced the so-called "Don't Say Gay" bill. This controversial piece of legislation restricts
+                    schools from teaching students about sexual orientation and gender issues, with teachers opening
+                    themselves up to lawsuits should they fail to comply.
+                    In 2020 Elon Musk wrote on Twitter "Pronouns suck" before deleting it. He then said: "I absolutely
+                    support trans, but all these pronouns are an aesthetic nightmare.</p>
+                </div>
+
+                <div class="col-xs-6 col-md-2">
+                    <h6><b>Categories</b></h6>
+                    <ul class="footer-links">
+                        <li><a href="/">C</a></li>
+                        <li><a href="/">UI Design</a></li>
+                        <li><a href="/">PHP</a></li>
+                        <li><a href="/">Java</a></li>
+                        <li><a href="/">Android</a></li>
+                        <li><a href="/">Python</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-2">
+                    <h6><b>Fast links</b></h6>
+                    <ul class="footer-links">
+                        <li><a href="/">About us</a></li>
+                        <li><a href="/">Contact</a></li>
+                        <li><a href="/">Partnership</a></li>
+                        <li><a href="/">Cookies</a></li>
+                        <li><a href="/">Site map</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright 2021 All Rights Reserved by
+                <a href="#">Programmers</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="http://facebook.com"><i class="fa fa-facebook fa-2x"></i></a></li>
+                        <li><a class="twitter" href="http://twitter.com"><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a class="dribble" href="#"><i class="fa fa-dribble fa-2x"></i></a></li>
+                        <li><a class="linkedin" href="http://linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</footer></div>
+</body>
+</html>
