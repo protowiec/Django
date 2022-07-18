@@ -1,5 +1,6 @@
 *.pyc
 *.sqlite3
 PRIVATE/
+ShopOnline/
 .idea
 .env
