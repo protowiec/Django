@@ -1,10 +1,6 @@
-import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
-os.environ['GH_TOKEN'] = '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'
-
 
 driver = webdriver.Firefox()
 driver.get(url='http://127.0.0.1:8000/admin')
